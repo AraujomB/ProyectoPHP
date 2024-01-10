@@ -26,11 +26,11 @@ if(!isset($_SESSION['iniciado'])){
         <form action='Inicio.php' method='post'>
         <table>";
         print "<tr><td>Usuario:</td><td><input type='text' name='user'></td>
-        <td>Contraseña:</td><td><input type='text' name='psswrd'></td>
+        <td>Contraseña:</td><td><input type='password' name='psswrd'></td>
         <td><input type='submit' name='enviar' value='Enviar'></td>
         </tr></table></form><br>¿No tienes cuenta?<a href='registrarUsuario.php'><input type='submit' name='crear' value='Registrarse'>
         <iframe id='video' width='560' height='315' src='https://www.youtube.com/embed/zlOnfjtTBic?si=YkVBunnwR96TOrWh' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>
-            <br><a href='listaPersonajes.php'><input id='botonLista' type='submit' name='lista' value='Ver lista de personajes'></a></center>";
+        <br><a href='listaPersonajes.php'><input id='botonLista' type='submit' name='lista' value='Ver lista de personajes'></a></center>";
         if(isset($_POST['enviar'])){
             $conexion = mysqli_connect('localhost','root','')
             or die('No se ha podido realizar la conexión');
