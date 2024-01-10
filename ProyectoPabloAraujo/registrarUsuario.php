@@ -40,17 +40,17 @@ if(!isset($_SESSION['iniciado'])){
             header("Location:listaPersonajesManejable.php");
         }
     }else{
-    $conexion = mysqli_connect('localhost','root','')
-    or die('No se ha podido realizar la conexión');
-    mysqli_select_db($conexion,'proyecto_pablo_araujo')
-    or die('No se ha podido conectar a la base de datos');
-    print "<center><h1 id='titulo'>Registrar nuevo usuario</h1>
-        <form action='registrarUsuario.php' method='post'>
-        <table><tr><td>Nombre de usuario</td><td><input type='text' name='nickname' required></td></tr>
-        <tr><td>Contraseña</td><td><input type='password' name='passwrd' required></td></tr>
-        <tr><td>Nombre</td><td><input type='text' name='nombreReg' required></td></tr>
-        <tr><td>Email</td><td><input type='text' name='email' required></td></tr></table>
-        <br><input type='submit' name='registrar' value='Registrarse'></center>";
+        $conexion = mysqli_connect('localhost','root','')
+        or die('No se ha podido realizar la conexión');
+        mysqli_select_db($conexion,'proyecto_pablo_araujo')
+        or die('No se ha podido conectar a la base de datos');
+        print "<center><h1 id='titulo'>Registrar nuevo usuario</h1>
+            <form action='registrarUsuario.php' method='post'>
+            <table><tr><td>Nombre de usuario</td><td><input type='text' name='nickname' required></td></tr>
+            <tr><td>Contraseña</td><td><input type='password' name='passwrd' required></td></tr>
+            <tr><td>Nombre</td><td><input type='text' name='nombreReg' required></td></tr>
+            <tr><td>Email</td><td><input type='text' name='email' required></td></tr></table>
+            <br><input type='submit' name='registrar' value='Registrarse'></center>";
     }
 }else{
     header("Location:listaPersonajesManejable.php");
