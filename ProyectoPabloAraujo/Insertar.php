@@ -66,7 +66,7 @@ if(isset($_POST["close"])){
     <option value='Viento'>Viento</option>
     <option value='Imaginario'>Imaginario</option>
     <option value='Cuantico'>Cuantico</option>
-    <option value='Fisico'>Fisico</option<
+    <option value='Fisico'>Fisico</option>
     <option value='Rayo'>Rayo</option></select></td></tr>
     <tr><td>Vía:</td><td><select name='via' required>
     <option value='Destruccion'>Destruccion</option>
