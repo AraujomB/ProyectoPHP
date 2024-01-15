@@ -11,7 +11,7 @@
         table{
             background-color: white;
             margin-top: 25px;
-            width: 80%;
+            width: 70%;
            }
         h1{
             color: green;
@@ -21,12 +21,13 @@
     <body>
 <?php
 session_start();
+if(!isset($_SESSION['iniciado'])){
     $conexion = mysqli_connect("localhost","root","")
     or die("No se puede realizar la conexión");
     mysqli_select_db($conexion, "proyecto_pablo_araujo")
     or die("No se puede conectar con la base de datos");
-    $consulta = "select * from personajes";
-    $consulta = mysqli_query($conexion, $consulta);
+    $instruccion = "select * from personajes";
+    $consulta = mysqli_query($conexion, $instruccion);
     $nfilas = mysqli_num_rows($consulta);
     print "<center>
     <h1>Personajes Honkai Star Rail</h1><table border=1>
@@ -42,6 +43,9 @@ session_start();
         }
     };
     print "</table><br><a href='Inicio.php'><input type='submit' name='volver' value='Volver al Login'></a></center>";
+}else{
+    header("Location:listaPersonajesManejable.php");
+}
 ?>
 </body>
 </html>

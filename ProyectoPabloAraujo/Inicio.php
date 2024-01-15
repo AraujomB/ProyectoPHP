@@ -3,6 +3,7 @@
         <style>
            body{
             background-image: url('ImagenesHonkai/backgroundInicio.jpg');
+            background-size: cover;
             color: white;
             padding: 50px;
            }
@@ -17,6 +18,7 @@
     <body>
 <?php
 session_start();
+setcookie('usuario',"");
 if(!isset($_SESSION['iniciado'])){
         $conexion = mysqli_connect('localhost','root','')
         or die('No se ha podido realizar la conexión');
@@ -29,7 +31,7 @@ if(!isset($_SESSION['iniciado'])){
         <td>Contraseña:</td><td><input type='password' name='psswrd'></td>
         <td><input type='submit' name='enviar' value='Enviar'></td>
         </tr></table></form><br>¿No tienes cuenta?<a href='registrarUsuario.php'><input type='submit' name='crear' value='Registrarse'>
-        <iframe id='video' width='560' height='315' src='https://www.youtube.com/embed/zlOnfjtTBic?si=YkVBunnwR96TOrWh' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>
+        <br><iframe id='video' width='560' height='315' src='https://www.youtube.com/embed/zlOnfjtTBic?si=YkVBunnwR96TOrWh' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>
         <br><a href='listaPersonajes.php'><input id='botonLista' type='submit' name='lista' value='Ver lista de personajes'></a></center>";
         if(isset($_POST['enviar'])){
             $conexion = mysqli_connect('localhost','root','')
@@ -47,6 +49,11 @@ if(!isset($_SESSION['iniciado'])){
                     session_destroy();
                     session_start();
                     $_SESSION['iniciado'] = true;
+                    $fichero = fopen("registroSesiones.txt","a");
+                    $linea = "Inicio de sesión de ".$_POST['user']." - Fecha: ".date('l jS \of F Y h:i:s A')."\n";
+                    fwrite($fichero, $linea);
+                    fclose($fichero);
+                    setcookie('usuario',$_POST['user']);
                     header("Location:listaPersonajesManejable.php");
                 }
                 else{

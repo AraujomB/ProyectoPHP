@@ -28,8 +28,12 @@
 session_start();
 if(isset($_POST["close"])){
     $_SESSION['iniciado'] = false;
+    $_SESSION['user'] = null;
     session_destroy();
     header("Location:Inicio.php");
+}elseif(!isset($_SESSION['iniciado'])){
+    header("Location:Inicio.php");
+
 }else{
     $conexion = mysqli_connect("localhost","root","")
     or die("No se puede realizar la conexión");
@@ -40,6 +44,7 @@ if(isset($_POST["close"])){
     $nfilas = mysqli_num_rows($consulta);
     print "<form action='ListaPersonajesManejable.php' method='post'><input id='cerrar' type='submit' name='close' value='Cerrar sesión'>
     </form><br><center>
+    <h2>Bienvenido/a ".$_COOKIE['usuario']."</h2>
     <h1>Personajes Honkai Star Rail</h1><table border=1>
     <tr><td>Nombre</td><td>Elemento</td><td>Vía</td><td>Imagen</td></tr>";
     for($i = 0; $i < $nfilas; $i++){
@@ -52,6 +57,10 @@ if(isset($_POST["close"])){
             print "<td><a href='ImagenesHonkai/".$fila['imagen']."'><img src='ImagenesHonkai/".$fila['imagen']."'></a></td>";
         }
     };
+    print "</table></center><br>
+    <center><a href='Insertar.php'><input type='submit' name='insert' value='Insertar PJ'></a>
+    <a href='Modificar.php'><input type='submit' name='modificar' value='Editar PJ'></a>
+    <a href='Eliminar.php'><input type='submit' name='delete' value='Eliminar PJ'></a></center>";
 }
 ?>
 </body>
