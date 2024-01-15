@@ -77,7 +77,7 @@ if(isset($_POST["close"])){
     <option value='Nihilidad'>Nihilidad</option>
     <option value='Conservacion'>Conservacion</option></select></td></tr>
     <tr><td>Imagen:</td><td><input type='file' name='imagen'></td></tr>
-    </table><input type='submit' name='insertar' value='Añadir PJ'></form></center>";
+    </table><p><input type='submit' name='insertar' value='Añadir PJ'></form><a href='listaPersonajesManejable.php'><input type='submit' name='cancelar' value='Cancelar'></a></p></center>";
 }
 
 ?>
