@@ -86,12 +86,11 @@ if(isset($_POST["close"])){
     or die("No se puede realizar la conexión");
     mysqli_select_db($conexion, "proyecto_pablo_araujo")
     or die("No se puede conectar con la base de datos");
-    $consulta = "select * from personajes";
-    $consulta = mysqli_query($conexion, $consulta);
+    $instruccion = "select * from personajes";
+    $consulta = mysqli_query($conexion, $instruccion);
     $nfilas = mysqli_num_rows($consulta);
     print "<form action='ListaPersonajesManejable.php' method='post'><input id='cerrar' type='submit' name='close' value='Cerrar sesión'>
     </form><br><center>
-    <h2>Bienvenido/a ".$_COOKIE['usuario']."</h2>
     <h1>Personajes Honkai Star Rail</h1><form action='Modificar.php' method='post'><table border=1>
     <tr><td>Nombre</td><td>Elemento</td><td>Vía</td><td>Imagen</td></tr>";
     for($i = 0; $i < $nfilas; $i++){
